@@ -35,6 +35,7 @@ void CropLayer<Dtype>::Forward_gpu(const vector<Blob<Dtype>*>& bottom,
       bottom[0]->height() * bottom[0]->width(), bottom[0]->width(),
       top[0]->height() * top[0]->width(), top[0]->width(),
       bottom_data + bottom[0]->offset(0, 0, crop_h_, crop_w_), top_data);
+    // for the marvin 3d copy_kernel, the offset shall account for the crop_d_.
 }
 
 template <typename Dtype>
