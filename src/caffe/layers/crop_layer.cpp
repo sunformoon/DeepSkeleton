@@ -89,6 +89,7 @@ void CropLayer<Dtype>::Forward_cpu(const vector<Blob<Dtype>*>& bottom,
   for (int n = 0; n < top[0]->num(); ++n) {
     for (int c = 0; c < top[0]->channels(); ++c) {
       for (int h = 0; h < top[0]->height(); ++h) {
+        // the copy number is based on the top(0)->width();
         caffe_copy(top[0]->width(),
             bottom_data + bottom[0]->offset(n, c, crop_h_ + h, crop_w_),
             top_data + top[0]->offset(n, c, h));
